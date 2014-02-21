@@ -148,7 +148,7 @@
 /*global casper, require */
  
 var LOGIN_URL, LOGIN_USERNAME, LOGIN_PASSWORD, casp;
-// var utils = require('utils');
+var utils = require('utils');
 //var re = new RegExp('\s*"selected[^>]*>(.*?)b');
  
 
@@ -183,7 +183,7 @@ LOGIN_PASSWORD = casp.cli.get('password');
 casp.start(LOGIN_URL, function () {
      'use strict';
  
-    this.includeJs()
+    
     this.click('.loginButton');
     this.log('Logging in', 'debug');
     this.fill('form#login_cont_formContentForm', {
@@ -260,17 +260,9 @@ casp.then(function () {
 });
  
 
- 
 
-
-$(document).ready(function(){
-  
-  $(".scrape").click(function(){
 
     // alert("clicked");
     casp.run();
       
-    });
 
-  // $().framerate({framerate: 200, logframes: true})
-  });
