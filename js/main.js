@@ -42,5 +42,12 @@ $(document).ready(function(){
       alert("search");
   })
   
+  $(".btn").click(function(){
+    // alert("hello");
+    // $( "button ,.btn,.btn-default, #scrape" ).removeClass();
+    $("#scrape").remove();
+
+    
+  })
 });
 
