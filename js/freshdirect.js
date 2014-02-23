@@ -153,6 +153,11 @@ var service = server.listen(ip_server, function(request, response) {
   var items_arr= [];
   var LOGIN_URL, LOGIN_USERNAME, LOGIN_PASSWORD, casp;
   var utils = require('utils');
+  //---------yummly
+  var credentials = {
+  id: 'd77dde75',
+  key: '4a28aa62c4333836b11ef718e632218f'
+}
   //var re = new RegExp('\s*"selected[^>]*>(.*?)b');
    
 

@@ -15,17 +15,43 @@ $(document).ready(function(){
       dataType: 'json',
       // ajaxStop: function() { $body.removeClass("loading"); }   
       success: function(data) { 
-       ajaxStop: $("body").removeClass("loading"); 
+       ajaxStop: $("body").removeClass("loading");
+       // $(".yum").addClass( "btn btn-default" ); 
+       // $(".yum").text( "Find Recipes" );
+
 
         //console.log(data); 
-        $.each(data, function(i, val) {
-          console.log(i +val);
-          i = i+1;
-          // console.log(element.name);
-            $('.list').append("<h4>"+ i + " "+val+"</h4>")
+        // $.each(data, function(i, val) {
+        //   console.log(i +val);
+        //   // console.log(element.name);
+        //     // $('ul.list').append("<li><h4>"+ i+"." + " "+val+"</h4></li>")
+            
+        //     if(i ===0){
+        //       $('ul.list').append("<li><h4>"+val+"</h4></li>").css("background","red");
+        //       // $('li').css('color', "red");
+        //   }else{
+        //     $('ul.list').append("<li><h4>"+val+"</h4></li>").css("background","blue");
+        //     // $('li').css("color","blue");
+        //   }
 
-        });
+ 
+
+        // });
+
+      for (var i=0; i<data.length;i++){
+      console.log(i);
+        if(i%2 ===0){
+          $('ul.list').append("<li class ='1'><h4>"+data[i]+"</h4></li>");
+          $("li.1").css("background","#f6f6f6 ");
+          console.log("imhere");
+          // console.log(i);
+        }else{
+          $('ul.list').append("<li class ='2'><h4>"+data[i]+"</h4></li>");
+          $("li.2").css("background","#f1f1f1");
+          console.log("imthere");
+        }
       }
+    }  
     });
   });
 
@@ -49,5 +75,7 @@ $(document).ready(function(){
 
     
   })
+
+  
 });
 
