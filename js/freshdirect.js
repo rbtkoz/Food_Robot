@@ -186,6 +186,20 @@ var service = server.listen(ip_server, function(request, response) {
 
   casp.start(LOGIN_URL, function () {
        'use strict';
+        // console.log("GOT HTTP REQUEST");
+        // console.log(JSON.stringify(request, null, null));
+
+        // // we set the headers here
+        // response.statusCode = 200;
+        // // response.headers = {"Cache": "no-cache", "Content-Type": "text/html"};
+        // // // this is also possible:
+        // // response.setHeader("foo", "bar");
+        // // // now we write the body
+        // // // note: the headers above will now be sent implictly
+        // // response.write("<html><head><title>YES!</title></head>");
+        // // // note: writeBody can be called multiple times
+        // // response.write("<body><p>pretty cool :)</body></html>");
+        // response.close();
    
       
       this.click('.loginButton');
@@ -271,7 +285,7 @@ var service = server.listen(ip_server, function(request, response) {
   //   console.log("back to main page");
   //             });
 
-  //
+
       casp.run(function() {
               response.statusCode = 200;
               response.headers= { 'Access-Control-Allow-Origin': '*' }
