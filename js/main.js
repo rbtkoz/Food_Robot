@@ -210,24 +210,45 @@ $('.list-recipe').on('mouseenter','li',function(){
 $('body').on('click','li',function(){
   $(this).find("ul").toggle();
   var recipeArray = [];
+  var sorted=[];
+  var string_sorted;
+  var sorted3 =[];
   $(this).find(".four li").each(function(n,v){
     recipeArray.push($(this).text());
     // console.log(recipeArray);
     return recipeArray;
+    
 });
+for(i =0; i<MyCartArray.length; i++){
+  // console.log(MyCartArray.length+"mycartlength");
+  sorted.push(MyCartArray[i].toLowerCase());
+  // console.log(sorted.length +"sorted length")
+  sorted1 = sorted.join(",");
+  var sorted2=sorted1.replace(/[^a-z\s]|farm|bag|resealable|local|wild|hand|cut|fresh|gallon|lb|oz|pkg|med|freshdirect|pack|ct|pint|/gi,'');
+  sorted3 = sorted2.split(" ");
+  // console.log(sorted3.length +"sorted3 length")
+  // console.log(sorted3 +"This is sorted1"+ sorted3[3]+sorted3[5]);
+  // string_sorted= sorted.join();
+  // sorted_1 =string_sorted.split(" ");
+  // console.log(sorted_1+"sorted");
+}
 
-for(i =0; i<recipeArray.length; i++){
-  // console.log(recipeArray[i]);
-    for(x =0; x<MyCartArray.length; x++){
+for(i =0; i<sorted3.length; i++){
+  // console.log(sorted3.length+"sorted3length in for loop");
+    for(x =0; x<recipeArray.length; x++){
   // if (recipeArray[i]===MyCartArray[x]){
-  if  (recipeArray[i].toUpperCase().indexOf(MyCartArray[x].toUpperCase()) < -1){
-    console.log("We have a match"+recipeArray[i]+MyCartArray[x] + "WEHAV IT!!!!!!!!!!!!");
+  if  (sorted3.indexOf(recipeArray[x].toLowerCase()) > -1){
+    console.log("We have a match"+sorted3[i]+" -------->"+recipeArray[x] + "WEHAV IT!!!!!!!!!!!!");
+    // $(this).find("ul li").text(recipeArray[x])
+
   }else{
+// console.log("nothing");
 
     // console.log(recipeArray[i]+"Sorry no matches"+MyCartArray[x]);
   }
-}
 
+}
+var recipeArray = [];
  } // $(this).css("font-size","18px");
   })
 
