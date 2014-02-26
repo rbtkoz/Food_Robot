@@ -1,7 +1,7 @@
 $(document).ready(function(){
   
 
-
+var MyCartArray;
 
   $("#scrape").click(function(event){
     event.preventDefault();
@@ -38,6 +38,7 @@ $(document).ready(function(){
       // ajaxStop: function() { $body.removeClass("loading"); }   
       success: function(data) { 
        ajaxStop: $("body").removeClass("loading");
+       MyCartArray =data;
        // $(".yum").addClass( "btn btn-default" ); 
        // $(".yum").text( "Find Recipes" );
 
@@ -76,6 +77,7 @@ $(document).ready(function(){
       // $(".list-title").css("display","block");
     }  
     });
+  return MyCartArray;
   });
 
   $(".fa-info-circle").click(function(){
@@ -142,10 +144,11 @@ $('#recipe-search').click(function(event) {
          for (var i=0; i<data1.length;i++){
           
         if(i%2 ===0){
-          $('ul.list-recipe').css("list-style","none").append("<li class ='edno'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4>"+data1[i].recipeName+"</h4>"+"<ul class='four' id ="+data1[i].id +"></ul>");
+          $('ul.list-recipe').css("list-style","none").append("<li class ='edno'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4>"+data1[i].recipeName+"</h4><i class='fa fa-check fa-3x'></i>"+"<ul class='four' id ="+data1[i].id +"></ul>");
           // $(".1").append("<ul class ='ingredients'></ul");        +'"'+"><h4>"+data1[i].id+'</h4></ul>'
           // $("#"+data1[i].id).css("display","none");
           $("#"+data1[i].id).toggle();
+
           
           // console.log(data2.id+"<--data2var here in 1");
           
@@ -159,7 +162,7 @@ $('#recipe-search').click(function(event) {
           console.log("im_Here");
           // console.log(i);
         }else{
-          $('ul.list-recipe').append("<li class ='dve'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4>"+data1[i].recipeName+"</h4><ul class'four' id ="+data1[i].id +"></ul>");
+          $('ul.list-recipe').append("<li class ='dve'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4>"+data1[i].recipeName+"</h4></h4><i class='fa fa-check fa-3x'></i><ul class='four' id ="+data1[i].id +"></ul>");
           // $("."+data1[i].id).css("display","none");
           // console.log(data2.id+"<--data2var here in 2");
           $("#"+data1[i].id).toggle();
@@ -206,8 +209,52 @@ $('.list-recipe').on('mouseenter','li',function(){
 
 $('body').on('click','li',function(){
   $(this).find("ul").toggle();
-  // $(this).css("font-size","18px");
+  var recipeArray = [];
+  $(this).find(".four li").each(function(n,v){
+    recipeArray.push($(this).text());
+    // console.log(recipeArray);
+    return recipeArray;
+});
+
+for(i =0; i<recipeArray.length; i++){
+  // console.log(recipeArray[i]);
+    for(x =0; x<MyCartArray.length; x++){
+  // if (recipeArray[i]===MyCartArray[x]){
+  if  (recipeArray[i].toUpperCase().indexOf(MyCartArray[x].toUpperCase()) < -1){
+    console.log("We have a match"+recipeArray[i]+MyCartArray[x] + "WEHAV IT!!!!!!!!!!!!");
+  }else{
+
+    // console.log(recipeArray[i]+"Sorry no matches"+MyCartArray[x]);
+  }
+}
+
+ } // $(this).css("font-size","18px");
   })
+
+// $('body').on("click","li",function(){
+//   $(this).find(".fa-check").toggle(function(){
+//     $(this).css("color","white");
+//   }, function(){
+//     $(this).css("color","white");
+//   });
+
+
+  $('body').on("click","li i",function(){
+   $(this).toggleClass("green");
+});
+
+//   .toggle(function () {
+//     $("#user_button").css({borderBottomLeftRadius: "0px"});
+// }, function () {
+//     $("#user_button").css({borderBottomLeftRadius: "5px"});
+// });
+  // $(this).find(".fa-check").toggle().css("background-color","green");
+//   $(this).find(".fa-check").toggle(function(){
+//     $(this).css("color","green");
+//   }, function(){
+//     $(this).css("color","green");
+//   });
+// })
   // alert("hello");
     // $(this).css("display","inline-block");
 
