@@ -50,6 +50,7 @@ header{
   padding:2px;
   font-size: 20px;
   color:white;
+  cursor:pointer;
 }
 
 /*header menu*/
@@ -83,15 +84,15 @@ i{
 /*subsection */
 .sub-container{
   width:100%;
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top:60px;
+  margin-bottom:60px;
 }
 
 .sub1{
-  width:40%;
+  width:45%;
   float:left;
-  height:300px;
- 
+/*  height:300px;
+*/ 
 /*  margin-left:600px;
 *//*  width:45%;
 */}
@@ -103,10 +104,10 @@ i{
   display:none;
 }
 .sub2{
-  width:40%;
+  width:44%;
   float:left;
-  height:300px;
-
+/*  height:300px;
+*/
 
 
 /*  margin-left:30px;
@@ -119,6 +120,10 @@ i{
 /*freshdirect input*/
 button{
 
+}
+
+.list{
+  list-style: none;
 }
 
 /*form*/
@@ -161,10 +166,14 @@ form{
 .recipe{
    margin-left:auto;
   margin-right:auto;
+  /*top-margin:10px;*/
   width:50%;
 
 }
 
+.recipe-value{
+  float:left;
+}
 /*empty*/
 /*.yum{
   margin: auto 0;
@@ -175,39 +184,73 @@ form{
 
 .and{
   margin-top:30px;
+  margin-right:10px;
   color: #7A7A7A;
   font-weight: lighter;
 
 }
 /*freshdirect contents*/
+.title-cart{
+  height:100px;
+  width:100%;
+  margin-top:20px;
+  display:none;
+  text-align: center;
+}
+.title-cart h4{
+  font-size: 50px;
+  margin:0 auto;
+  font-weight: lighter;
+
+}
 h4{
-  font-weight: 30px;
-  font-size:16px;
+/*  font-weight: 30px;
+*/  font-size:16px;
   padding:0px;
   margin:0px;
   margin-bottom:5px;
+
 }
 
 .list{
   clear:both;
   margin:auto 0;
-  margin-top:50px;
+  margin-top:10px;
 }
-li.1{
+li.one{
   margin-bottom:5px;
+  cursor:pointer;
 }
 
-li.2{
+li.two{
     margin-bottom:5px;
+    cursor:pointer;
+
 }
 
+.one h4{
+  padding-left:8px;
+}
+
+.two h4{
+  padding-left:8px;
+}
 /*recipe*/
 .list-recipe{
+  margin-top:52px;
   clear:both;
   height:100%;
 }
 #recipe-search{
   margin-top:10px;
+/*  position:absolute;
+*/}
+
+li h4{
+   font-weight: lighter;
+   font-size:24px;
+ /*  float:left;*/
+   display:inline-block;
 }
 /*footer*/
 footer{
@@ -223,6 +266,35 @@ footer{
   padding-top: 3px; 
   padding-right:5px;
 }
+li.edno, li.dve{
+  margin-top:10px;
+
+
+}
+
+.edno h4{
+/*  clear:all;
+*/  display:inline-block;
+margin-left:10px;
+
+
+}
+
+.dve h4{
+/*  clear:all;
+*/  display:inline-block;
+margin-left:10px;
+
+}
+
+/*.dve img{
+  float:left;
+}
+
+.edno img{
+  float:left;
+}*/
+
 
 /*modal loading screen*/
 .modal {

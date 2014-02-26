@@ -155,6 +155,12 @@ var service = server.listen(ip_server, function(request, response) {
   var utils = require('utils');
   //var re = new RegExp('\s*"selected[^>]*>(.*?)b');
    
+// request('/login', (request, response) ->
+//     console.log(data);
+//   };
+  
+// router.get'/login',(request, response) ->
+// console.log(data);
 
   casp = require('casper').create({
        viewportSize: {
@@ -183,7 +189,8 @@ var service = server.listen(ip_server, function(request, response) {
   // casp.start (function(){
   // this.click('.loginButton');
   // });
-
+// router.get '/', (request, response) ->
+//   response.end 'Home page'
   casp.start(LOGIN_URL, function () {
        'use strict';
         // console.log("GOT HTTP REQUEST");
