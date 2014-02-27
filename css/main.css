@@ -7,18 +7,25 @@ body{
 
 .container-main{
   width:100%;
+  height:100%;
+/*  background-color:#6FF41A
+*/
  /* margin:0 auto;
   text-align:center;*/
 }
 .container-content{
 /*  width:100%;
 */  
+  
   margin:0px;
   padding:0px;
   padding-left:10px;
+
+
 /*  padding-top:10px;
 */
 }
+
 
 /*header*/
 header{
@@ -65,14 +72,49 @@ i{
   color:white;
 }
 
+.info-text{
+ /* float:left;
+  width:10%;
+  height:300px;
+
+  clear:both;*/
+  display:none;
+
+}
+.active{
+  background-color:#6FF41A;
+/*  float:right;
+*/  margin-right:10px;
+  margin-top:10px;
+  width:20%;
+/*  height:100px;
+*/  /*clear:both;*/
+  display:block;
+  fon
+
+}
+.active h4{
+  padding:10px 10px;
+/*  padding-top:10px;*/
+  font-weight: lighter;
+  font-size:30px;
+  color:white;
+}
+
 .fa-info-circle:hover,.fa-facebook:hover,.fa-search:hover{
  color: #F24402;
  }
 
+
+
 /*image*/
 .img{
+  opacity:0.9;
   background-image:url('../assets/background.png');
+  background-color:#F24402;
+  
   background-position:center; 
+
 /*  background-size:100%;
 */  
   height:350px;
@@ -81,11 +123,30 @@ i{
 
 }
 
+/*description*/
+.description{
+  width:50%;
+  margin:0 auto;
+  margin-left:265px;
+  padding: 5px 40px;
+  text-align:left;
+}
+
+.description h4{
+  font-size:40px;
+  text-decoration: none;
+}
+
+.description h4:hover{
+  font-size:40px;
+  text-decoration: none;
+}
 /*subsection */
 .sub-container{
   width:100%;
-  margin-top:60px;
+  margin-top:10px;
   margin-bottom:60px;
+
 }
 
 .sub1{
@@ -137,6 +198,7 @@ form{
 }
 
 .form-control{
+
 
 }
 /*.btn-default{
@@ -245,7 +307,9 @@ li.two{
   margin-top:10px;
 /*  position:absolute;
 */}
-
+.list-recipe li{
+  margin-top:5px;
+}
 li h4{
    font-weight: lighter;
    font-size:24px;
@@ -342,7 +406,7 @@ body.loading {
 
 .fresh{
 
-}
+
 /* Anytime the body has the loading class, our
    modal element will be visible */
 

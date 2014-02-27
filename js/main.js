@@ -82,15 +82,17 @@ var MyCartArray;
 
   $(".fa-info-circle").click(function(){
 
-      alert("info");
-  })
-
+      // alert("info");
+    $(".info-text").toggleClass("active");
+    // $(".info-text")
+    })
+  
    $(".fa-facebook").click(function(){
-      alert("social");
+      $(".info-text").toggleClass("active");
   })
 
    $(".fa-search").click(function(){
-      alert("search");
+      $(".info-text").toggleClass("active");
   })
   
   $("#scrape").click(function(){
@@ -238,10 +240,23 @@ for(i =0; i<sorted3.length; i++){
     for(x =0; x<recipeArray.length; x++){
   // if (recipeArray[i]===MyCartArray[x]){
   if  (sorted3.indexOf(recipeArray[x].toLowerCase()) > -1){
+    var foo = recipeArray[x];
     console.log("We have a match"+sorted3[i]+" -------->"+recipeArray[x] + "WEHAV IT!!!!!!!!!!!!");
-    // $(this).find("ul li").text(recipeArray[x])
+    // $("."+recipeArray[x]).css("color","red");
+   // if($("li").parent().hasClass('four')){
 
+    $('li:contains('+'"'+foo+'"'+')').filter(function(){
+      return $(this).text() === foo;}).css("background-color","#329932");
+    // $(this).find("ul li").text(recipeArray[x])
+// }
   }else{
+    // if($("ul").parent().hasClass('four')){
+      $('.four li:contains('+'"'+recipeArray[x]+'"'+')').css("background-color","#ff4c4c");
+    // }else{
+      // $("li").css("background-color","none");
+      // $("li").hasClass("four").css("background-color","none");
+  // }
+
 // console.log("nothing");
 
     // console.log(recipeArray[i]+"Sorry no matches"+MyCartArray[x]);
@@ -263,6 +278,8 @@ var recipeArray = [];
   $('body').on("click","li i",function(){
    $(this).toggleClass("green");
 });
+
+
 
 //   .toggle(function () {
 //     $("#user_button").css({borderBottomLeftRadius: "0px"});
