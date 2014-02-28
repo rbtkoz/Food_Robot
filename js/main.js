@@ -126,6 +126,7 @@ var MyCartArray;
 // })
 // })
 $('#recipe-search').click(function(event) {
+
     event.preventDefault();
     var keywords = $('#recipe-value').val();
     var ID="d77dde75";
@@ -141,12 +142,15 @@ $('#recipe-search').click(function(event) {
        dataType: 'jsonp',
        //dataType: 'jsonp json'
        success: function(data) { 
+        //reset
+        $('ul.list-recipe').empty();
+
         var data1 = data.matches;
         console.log(data);
-         for (var i=0; i<data1.length;i++){
+        for (var i=0; i<data1.length;i++){
           
         if(i%2 ===0){
-          $('ul.list-recipe').css("list-style","none").append("<li class ='edno'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4>"+data1[i].recipeName+"</h4><i class='fa fa-check fa-3x'></i>"+"<ul class='four' id ="+data1[i].id +"></ul>");
+          $('ul.list-recipe').css("list-style","none").append("<li class ='edno'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4 class ='title1'>"+data1[i].recipeName+"</h4><i class='fa fa-check fa-3x'></i>"+"<ul class='four' id ="+data1[i].id +"></ul>");
           // $(".1").append("<ul class ='ingredients'></ul");        +'"'+"><h4>"+data1[i].id+'</h4></ul>'
           // $("#"+data1[i].id).css("display","none");
           $("#"+data1[i].id).toggle();
@@ -160,11 +164,11 @@ $('#recipe-search').click(function(event) {
             $('#'+data1[i].id).css("list-style","none").append("<li><h4>"+data1[i].ingredients[z]+"</h4></li>");
           }
           console.log(data1[i].ingredients);
-          $("li.edno").css("background","#f6f6f6 ");
+          $("li.edno").css("background","#f6f6f6");
           console.log("im_Here");
           // console.log(i);
         }else{
-          $('ul.list-recipe').append("<li class ='dve'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4>"+data1[i].recipeName+"</h4></h4><i class='fa fa-check fa-3x'></i><ul class='four' id ="+data1[i].id +"></ul>");
+          $('ul.list-recipe').append("<li class ='dve'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4 class ='title1'>"+data1[i].recipeName+"</h4></h4><i class='fa fa-check fa-3x'></i><ul class='four' id ="+data1[i].id +"></ul>");
           // $("."+data1[i].id).css("display","none");
           // console.log(data2.id+"<--data2var here in 2");
           $("#"+data1[i].id).toggle();
@@ -212,6 +216,7 @@ $('.list-recipe').on('mouseenter','li',function(){
 $('body').on('click','li',function(){
   $(this).find("ul").toggle();
   var recipeArray = [];
+  var recipeArray3 =[];
   var sorted=[];
   var string_sorted;
   var sorted3 =[];
@@ -226,7 +231,7 @@ for(i =0; i<MyCartArray.length; i++){
   sorted.push(MyCartArray[i].toLowerCase());
   // console.log(sorted.length +"sorted length")
   sorted1 = sorted.join(",");
-  var sorted2=sorted1.replace(/[^a-z\s]|farm|bag|resealable|local|wild|hand|cut|fresh|gallon|lb|oz|pkg|med|freshdirect|pack|ct|pint|/gi,'');
+  var sorted2=sorted1.replace(/[^a-z\s]|farm|bag|resealable|local|wild|hand|cut|fresh|gallon|lb|oz|pkg|med|seeds|seed|freshdirect|pack|ct|pint|/gi,'');
   sorted3 = sorted2.split(" ");
   // console.log(sorted3.length +"sorted3 length")
   // console.log(sorted3 +"This is sorted1"+ sorted3[3]+sorted3[5]);
@@ -235,23 +240,41 @@ for(i =0; i<MyCartArray.length; i++){
   // console.log(sorted_1+"sorted");
 }
 
+
+for(x =0; x<recipeArray.length; x++){
+     var recipeArray1 = recipeArray.join(","); 
+     var recipeArray2 = recipeArray1.replace(/[^a-z\s]/gi," ");
+     // console.log(recipeArray2+"recipeArray2");
+     recipeArray3 =recipeArray2.split(" ");
+
+     }
+
 for(i =0; i<sorted3.length; i++){
   // console.log(sorted3.length+"sorted3length in for loop");
-    for(x =0; x<recipeArray.length; x++){
+    for(x =0; x<recipeArray3.length; x++){
+     // var recipeArray1 = recipeArray.join(","); 
+     // var recipeArray2 = recipeArray1.replace(/[^a-z\s]/gi," ");
+     // // console.log(recipeArray2+"recipeArray2");
+     // recipeArray3 =recipeArray2.split(" ");
+
+     // console.log(recipeArray3);
   // if (recipeArray[i]===MyCartArray[x]){
-  if  (sorted3.indexOf(recipeArray[x].toLowerCase()) > -1){
-    var foo = recipeArray[x];
-    console.log("We have a match"+sorted3[i]+" -------->"+recipeArray[x] + "WEHAV IT!!!!!!!!!!!!");
+  if  (sorted3.indexOf(recipeArray3[x].toLowerCase()) > -1){
+    var foo = recipeArray3[x];
+    console.log("We have a match"+sorted3[i]+" -------->"+recipeArray3[x] + "WEHAV IT!!!!!!!!!!!!");
     // $("."+recipeArray[x]).css("color","red");
    // if($("li").parent().hasClass('four')){
-
+      
     $('li:contains('+'"'+foo+'"'+')').filter(function(){
-      return $(this).text() === foo;}).css("background-color","#329932");
+      return $(this).css("background-color","#329932");});
+      $(".edno").css("background-color","#f1f1f1");
+      $(".dve").css("background-color","#f6f6f6");
+    // $('li:contains('+'"'+foo+'"'+')').csss("background-color","#329932");
     // $(this).find("ul li").text(recipeArray[x])
 // }
   }else{
     // if($("ul").parent().hasClass('four')){
-      $('.four li:contains('+'"'+recipeArray[x]+'"'+')').css("background-color","#ff4c4c");
+      $('.four li:contains('+'"'+recipeArray3[x]+'"'+')').css("background-color","#ff4c4c");
     // }else{
       // $("li").css("background-color","none");
       // $("li").hasClass("four").css("background-color","none");
@@ -263,7 +286,7 @@ for(i =0; i<sorted3.length; i++){
   }
 
 }
-var recipeArray = [];
+var recipeArray3 = [];
  } // $(this).css("font-size","18px");
   })
 
@@ -276,6 +299,7 @@ var recipeArray = [];
 
 
   $('body').on("click","li i",function(){
+
    $(this).toggleClass("green");
 });
 
