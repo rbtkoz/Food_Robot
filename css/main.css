@@ -108,45 +108,80 @@ i{
 
 
 /*image*/
+/*.yum{
+  height:540px;
+  width:100%;
+}*/
 .img{
   opacity:0.9;
   background-image:url('../assets/background.png');
   background-color:#F24402;
-  
   background-position:center; 
-
-/*  background-size:100%;
-*/  
   height:350px;
   width:100%;
   background-repeat:no-repeat;
 
 }
 
+#slides{
+  
+  display:none;
+  
+ height:600px;
+ width:auto;
+  position:relative; 
+  top: -70px; 
+  left: 0px;
+  z-index: -1;
+  
+
+}
+
+
+.slidesjs-pagination,.slidesjs-previous,.slidesjs-next{
+  display:none;
+}
+
+.slides-container{
+  position: relative;
+  top:0;
+  left:0;
+  padding:0px;
+  height:550px;
+}
 /*description*/
 .description{
-  width:50%;
+  width:100%;
   margin:0 auto;
-  margin-left:265px;
-  padding: 5px 40px;
+/*  margin-left:265px;
+  padding: 5px 40px;*/
   text-align:left;
+  position: absolute; 
+  top: 80px; 
+  left: 100px;
+  z-index:2;
+
 }
 
 .description h4{
-  font-size:40px;
+  font-size:100px;
+
+  color:white;
   text-decoration: none;
+  z-index:1;
 }
 
 .description h4:hover{
-  font-size:40px;
+  font-size:100px;
+  color:black;
   text-decoration: none;
 }
 /*subsection */
 .sub-container{
   width:100%;
   margin-top:10px;
-  margin-bottom:60px;
-
+/*  margin-bottom:60px;
+*/
 }
 
 .sub1{
@@ -236,13 +271,7 @@ form{
 .recipe-value{
   float:left;
 }
-/*empty*/
-/*.yum{
-  margin: auto 0;
-  width:50%;
-  text-align:center;
-}
-*/
+
 
 .and{
   margin-top:30px;

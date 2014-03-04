@@ -1,10 +1,31 @@
 $(document).ready(function(){
   
 
+  $("#slides").slidesjs({
+    play: {
+      active: false,
+        // [boolean] Generate the play and stop buttons.
+        // You cannot use your own buttons. Sorry.
+      effect: "slide",
+        // [string] Can be either "slide" or "fade".
+      interval: 5000,
+        // [number] Time spent on each slide in milliseconds.
+      auto: true,
+        // [boolean] Start playing the slideshow on load.
+      swap: true,
+        // [boolean] show/hide stop and play buttons
+      pauseOnHover: false,
+        // [boolean] pause a playing slideshow on hover
+      restartDelay: 2500
+        // [number] restart delay on inactive slideshow
+    }
+  });
+    
+
 var MyCartArray;
 
   $("#scrape").click(function(event){
-    event.preventDefault();
+    // event.preventDefault();
     var user = $('#exampleInputEmail1').val();
     var pass = $('#exampleInputPassword1').val()
     console.log(user +" " + pass);
@@ -26,15 +47,21 @@ var MyCartArray;
 
     $.ajax({
      
-      url: 'http://127.0.0.1:8585',
-
+      url: 'http://fathomless-hollows-6855.herokuapp.com/',
+      // url: 'http://127.0.0.1:8585',
       // data: "json_me",
       // type:"POST",
       // data:'{"user": "' + user+ '", "pass": "' + pass + '"}',
+      data: {
+                    data: "json_me",
+                    user:  $('#exampleInputEmail1').val(),
+                    pass: $('#exampleInputPassword1').val()
+                },
       type: 'GET',
-      data: "json_me",
+      // data: "json_me+param",
       crossDomain: true,
       dataType: 'json',
+
       // ajaxStop: function() { $body.removeClass("loading"); }   
       success: function(data) { 
        ajaxStop: $("body").removeClass("loading");
@@ -215,6 +242,9 @@ $('.list-recipe').on('mouseenter','li',function(){
 
 $('body').on('click','li',function(){
   $(this).find("ul").toggle();
+
+   $(this).find("i").toggleClass("green");
+
   var recipeArray = [];
   var recipeArray3 =[];
   var sorted=[];
@@ -231,7 +261,7 @@ for(i =0; i<MyCartArray.length; i++){
   sorted.push(MyCartArray[i].toLowerCase());
   // console.log(sorted.length +"sorted length")
   sorted1 = sorted.join(",");
-  var sorted2=sorted1.replace(/[^a-z\s]|farm|bag|resealable|local|wild|hand|cut|fresh|gallon|lb|oz|pkg|med|seeds|seed|freshdirect|pack|ct|pint|/gi,'');
+  var sorted2=sorted1.replace(/[^a-z\s]|farm|bag|resealable|local|wild|extra|hand|cut|fresh|gallon|lb|oz|pkg|med|seeds|seed|freshdirect|pack|ct|pint|/gi,'');
   sorted3 = sorted2.split(" ");
   // console.log(sorted3.length +"sorted3 length")
   // console.log(sorted3 +"This is sorted1"+ sorted3[3]+sorted3[5]);
@@ -265,7 +295,7 @@ for(i =0; i<sorted3.length; i++){
     // $("."+recipeArray[x]).css("color","red");
    // if($("li").parent().hasClass('four')){
       
-    $('li:contains('+'"'+foo+'"'+')').filter(function(){
+    $('.four li:contains('+'"'+foo+'"'+')').filter(function(){
       return $(this).css("background-color","#329932");});
       $(".edno").css("background-color","#f1f1f1");
       $(".dve").css("background-color","#f6f6f6");

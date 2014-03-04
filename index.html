@@ -9,6 +9,12 @@
       <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
       <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
       <link rel="stylesheet" href="css/font-awesome.min.css">
+      
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="js/jquery.slides.min.js"></script>
+  
+
     </head>
       <body>
         <div class ="container-main">
@@ -25,10 +31,26 @@
 
           </header>
           <div class ="info-text"><h4>This exists to make your life better.If you like it let me know <a href="mailto:kozovskia@gmail.com">kozovski.a@gmail.com</a></h4></div>
+         
+          <!-- <div class ="img"> -->
+          <div class ="yum">
           
-          <div class ="img"><div class ="description"><h4>Import your freshdirect cart.</br> Search for recipes.</br>Have what you need.</h4></div></div>
-          <div class ="yum"></div>
-          <div class = "container-content">
+            <div class="slides-container">
+              <div class ="description">
+                <h4>Import your freshdirect cart.</br> Search for recipes.</br>Have what you need.</h4>
+              </div>  
+              <div id="slides">
+
+                <img src="images/converted/img_1.jpg">
+                <img src="images/converted/img_2.jpg">
+                <img src="images/converted/img_3.jpg">
+                <img src="images/converted/img_4.jpg">
+                <img src="images/converted/img_5.jpg">
+                  
+              </div>
+            </div>
+          </div>  
+          
             <div class ="sub-container">
 
               <div class ="subsub">
@@ -38,7 +60,7 @@
                   <div class="title-cart"><h4>My Cart</h4></div>
                   <form role="form" class ="import">
 
-                    <div class="form-group">
+                    <div class="form-group" form method="POST" action="http://127.0.0.1:8585">
                       <!--                         <label for="exampleInputEmail1"></label> -->  
                       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Freshdirect login">
                     </div>
