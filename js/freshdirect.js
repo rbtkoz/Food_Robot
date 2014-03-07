@@ -144,9 +144,11 @@
 var server = require('webserver').create();
   var system = require('system');
   var fs     = require('fs');
+
   var port   = system.env.PORT || 8585;
-  console.log(port +"I am binding to this port");
-  response.header('Access-Control-Allow-Origin', '*');
+  var queryString = require( "querystring" );
+
+  console.log(port +" <-- I am binding to this port");
     
 //--------------------------------------------------------
 // var ip_server = '127.0.0.1:8585';
@@ -156,10 +158,30 @@ var server = require('webserver').create();
 /*jslint browser: true, regexp: true */
 /*global casper, require */
 var service = server.listen(port, function(request, response) {
-  response.header('Access-Control-Allow-Origin', '*');
+console.log('Request received at ' + new Date());
+var login = JSON.stringify(request.url, null, 4);
+var parts = login.split('*');
+// for (i =0;i<parts.length;i++){
+//   console.log(parts[i]);
+// }
+
+// console.log(decodeURIComponent(parts[1])+ " "+parts[3]);
+LOGIN_USERNAME = decodeURIComponent(parts[1]);
+  LOGIN_PASSWORD = parts[3];
+// var re = [/.*user=\s+(.*)\s+&pass=.*/]
+// var newtext = login.replace(re, '');
+// console.log(newtext);
+
+// var queryObj = queryString.parse( theUrl.query );
+// var obj = JSON.parse( queryObj.jsonData );
+// console.log( obj.data);
+
+
+    // console.log(data+ "this is data");
   var items_arr= [];
   var LOGIN_URL, LOGIN_USERNAME, LOGIN_PASSWORD, casp;
   var utils = require('utils');
+
   //var re = new RegExp('\s*"selected[^>]*>(.*?)b');
    
 // request('/login', (request, response) ->
@@ -195,15 +217,18 @@ var service = server.listen(port, function(request, response) {
   // LOGIN_PASSWORD = casp.cli.get('password');
 
 
-  LOGIN_USERNAME = 'kozovski.a@gmail.com'
-  LOGIN_PASSWORD = 'mypassword'
+  // LOGIN_USERNAME = 'kozovski.a@gmail.com'
+  // LOGIN_PASSWORD = 'mypassword'
   // casp.start (function(){
   // this.click('.loginButton');
   // });
 // router.get '/', (request, response) ->
 //   response.end 'Home page'
-  casp.start(LOGIN_URL, function () {
+  casp.start(LOGIN_URL, function (status) {
        'use strict';
+
+        
+ 
         // console.log("GOT HTTP REQUEST");
         // console.log(JSON.stringify(request, null, null));
 
@@ -227,11 +252,14 @@ var service = server.listen(port, function(request, response) {
             'password': LOGIN_PASSWORD
        }, true); 
        this.wait(2000);
+             
        this.mouse.move(".cart");
        // this.wait(5000);
        this.log('Logged in', 'debug');
        // this.click('a.cart');
+    
        // this.echo("body");
+
   });
    
 
@@ -294,8 +322,10 @@ var service = server.listen(port, function(request, response) {
     
     utils.dump(items_arr);
     // return items_arr;
-    this.click('.logoutButton');
+ 
+
     console.log("I just clicked back");
+  
   });
   
    
@@ -305,9 +335,12 @@ var service = server.listen(port, function(request, response) {
 
 
       casp.run(function() {
+              
               response.statusCode = 200;
               response.headers= { 'Access-Control-Allow-Origin': '*' }
               //sends results as JSON object
+              // var hello =request.write(JSON.stringify(data));
+              // console.log(hello);
               var json_me= response.write(JSON.stringify(items_arr, null, null));
               response.close();
 
@@ -325,7 +358,7 @@ var service = server.listen(port, function(request, response) {
     // alert("clicked");
     
       
-console.log('Serever running at http://' + system.env.PORT+'/');
+console.log('Running ' + server+' ...');
   // console.log(port +"I am binding to this port");
 
 

@@ -28,7 +28,7 @@ var MyCartArray;
     // event.preventDefault();
     var user = $('#exampleInputEmail1').val();
     var pass = $('#exampleInputPassword1').val()
-    console.log(user +" " + pass);
+    // console.log(user +" " + pass);
      ajaxStart: $("body").addClass("loading"); 
     
     // $.ajax({
@@ -44,18 +44,33 @@ var MyCartArray;
     //   data:'{"user":"'+user+ '","pass":"'+pass +'"}',
     //   dataType:'json'
     // })
-
+    // $.ajax({
+     
+    //   // url: 'http://fathomless-hollows-6855.herokuapp.com/',
+    //   url: 'http://127.0.0.1:8585',
+    //   // data: "json_me",
+    //   // type:"POST",
+    //   // data:'{"user": "' + user+ '", "pass": "' + pass + '"}',
+    //   data: {
+    //                 user:  $('#exampleInputEmail1').val(),
+    //                 pass: $('#exampleInputPassword1').val()
+    //             },
+    //   type: 'POST',
+    //   // data: "json_me+param",
+    //   crossDomain: true,
+    //   dataType: 'json',
+    // });
     $.ajax({
      
-      url: 'http://fathomless-hollows-6855.herokuapp.com/',
-      // url: 'http://127.0.0.1:8585',
+      // url: 'http://fathomless-hollows-6855.herokuapp.com/',
+      url: 'http://127.0.0.1:8585',
       // data: "json_me",
       // type:"POST",
       // data:'{"user": "' + user+ '", "pass": "' + pass + '"}',
       data: {
-                    data: "json_me",
-                    user:  $('#exampleInputEmail1').val(),
-                    pass: $('#exampleInputPassword1').val()
+                    // data: "json_me",
+                    user:  '*'+$('#exampleInputEmail1').val()+'*',
+                    pass: '*'+$('#exampleInputPassword1').val()+'*'
                 },
       type: 'GET',
       // data: "json_me+param",
