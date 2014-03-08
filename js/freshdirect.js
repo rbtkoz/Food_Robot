@@ -157,7 +157,7 @@ var server = require('webserver').create();
 //-------------------------------------------------------
 /*jslint browser: true, regexp: true */
 /*global casper, require */
-var service = server.listen(port, function(request, response) {
+var service = server.listen(port,{ 'keepAlive': true }, function(request, response) {
 console.log('Request received at ' + new Date());
 var login = JSON.stringify(request.url, null, 4);
 var parts = login.split('*');
