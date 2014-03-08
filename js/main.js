@@ -61,9 +61,9 @@ var MyCartArray;
     //   dataType: 'json',
     // });
     $.ajax({
-     
+       url: 'http://tranquil-escarpment-5933.herokuapp.com/',
       // url: 'http://fathomless-hollows-6855.herokuapp.com/',
-      url: 'http://127.0.0.1:8585',
+      // url: 'http://127.0.0.1:8585',
       // data: "json_me",
       // type:"POST",
       // data:'{"user": "' + user+ '", "pass": "' + pass + '"}',
