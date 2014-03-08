@@ -323,6 +323,7 @@ LOGIN_USERNAME = decodeURIComponent(parts[1]);
     utils.dump(items_arr);
     // return items_arr;
  
+       this.click('.logoutButton');
 
     console.log("I just clicked back");
   
