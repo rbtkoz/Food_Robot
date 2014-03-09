@@ -25,7 +25,7 @@ $(document).ready(function(){
 var MyCartArray;
 
   $("#scrape").click(function(event){
-    // event.preventDefault();
+    event.preventDefault();
     var user = $('#exampleInputEmail1').val();
     var pass = $('#exampleInputPassword1').val()
     // console.log(user +" " + pass);
@@ -61,9 +61,9 @@ var MyCartArray;
     //   dataType: 'json',
     // });
     $.ajax({
-       url: 'http://tranquil-escarpment-5933.herokuapp.com/',
+       // url: 'http://tranquil-escarpment-5933.herokuapp.com/',
       // url: 'http://fathomless-hollows-6855.herokuapp.com/',
-      // url: 'http://127.0.0.1:8585',
+      url: 'http://127.0.0.1:8585',
       // data: "json_me",
       // type:"POST",
       // data:'{"user": "' + user+ '", "pass": "' + pass + '"}',
@@ -77,10 +77,39 @@ var MyCartArray;
       crossDomain: true,
       dataType: 'json',
 
+
+      
+      error: function(xhr, data, errorThrown)
+          {
+            
+              
+              ajaxStop: $("body").removeClass("loading");
+               $("#exampleInputPassword1").toggleClass("inactive");
+                $("#exampleInputEmail1").toggleClass("inactive");
+
+                $("#scrape").toggleClass("inactive");
+                $(".title-cart").css("display","none"); 
+
+
+              alert("Sorry try again. Wrong username or password");
+            
+          },
       // ajaxStop: function() { $body.removeClass("loading"); }   
       success: function(data) { 
+        MyCartArray =data;
+       if( !$.isArray(MyCartArray) ||  !MyCartArray.length ) {
+    //handler either not an array or empty array
+    $("body").removeClass("loading");
+    $("#exampleInputPassword1").toggleClass("inactive");
+    $("#exampleInputEmail1").toggleClass("inactive");
+    $("#scrape").toggleClass("inactive");
+    $(".title-cart").css("display","none"); 
+    $(".alert-danger").toggle("activate");
+    // alert("Sorry try again. Wrong username or password or your cart is empty");
+}else{
        ajaxStop: $("body").removeClass("loading");
        MyCartArray =data;
+
        // $(".yum").addClass( "btn btn-default" ); 
        // $(".yum").text( "Find Recipes" );
 
@@ -117,7 +146,8 @@ var MyCartArray;
         }
       }
       // $(".list-title").css("display","block");
-    }  
+    }
+  }
     });
   return MyCartArray;
   });
@@ -138,11 +168,16 @@ var MyCartArray;
   })
   
   $("#scrape").click(function(){
+    
+        $("#exampleInputPassword1").toggleClass("inactive");
+        $("#exampleInputEmail1").toggleClass("inactive");
+
+        $("#scrape").toggleClass("inactive");
+        $(".title-cart").css("display","inline-block"); 
     // alert("hello");
     // $( "button ,.btn,.btn-default, #scrape" ).removeClass();
     // $(".form-group, .and").css("display","none");
-    $("#scrape,.form-group").remove();
-    $(".title-cart").css("display","inline-block");
+   
     // // $(".and").css("margin-left","300px");
     //  $(".form-control").css("margin-left","132px");
     //  $(".recipe").css("margin-top","0px");

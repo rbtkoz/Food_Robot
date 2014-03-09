@@ -322,10 +322,35 @@ LOGIN_USERNAME = decodeURIComponent(parts[1]);
     
     utils.dump(items_arr);
     // return items_arr;
- 
-       this.click('.logoutButton');
 
-    console.log("I just clicked back");
+if(casp.exists('.logoutButton')){
+   this.click('.logoutButton');
+   console.log("I just clicked back");
+}else{
+  console.log("Something went wrong");
+  // this.exit
+  // casper.run();
+  casp.wait(1000, function() {
+        this.click('.loginButton');
+        // response.statusCode = 404;
+        // response.close();
+
+
+      //         casp.die(function(){
+      //   utils.dump("Casper is out, peace");
+      // });
+              // utils.dump(items_arr);              
+
+  
+});
+
+
+}
+
+ 
+       
+
+  
   
   });
   
