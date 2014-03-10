@@ -13,6 +13,9 @@
 
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="js/jquery.slides.min.js"></script>
+ <!--  // <script src="js/additional-methods.min.js"></script> -->
+  <script src="js/jquery.validate.min.js"></script>
+  
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -69,18 +72,19 @@
                 <div class="alert alert-danger"><h4>Your cart is empty or you have entered the wrong username/password. Try again.</h4></div>
 
                   <div class="title-cart"><h4>My Cart</h4></div>
-                  <form role="form" class ="import">
+                  <form role="form" class ="import" id="fd">
 
                     <div class="form-group" form method="POST" action="http://127.0.0.1:8585">
                       <!--                         <label for="exampleInputEmail1"></label> -->  
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Freshdirect login">
+                      <input type="email" name ="field1" class="form-control" id="exampleInputEmail1" placeholder="Freshdirect login">
                     </div>
                     <div class="form-group">
                         <!--                         <label for="exampleInputPassword1"></label>-->  
-                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Freshdirect Password">
+                       <input type="password" name ="field2" class="form-control" id="exampleInputPassword1" placeholder="Freshdirect Password"required>
                     </div>
                     <button type="submit" class="btn btn-default" id="scrape">Import Food</button>
                   </form>
+
                   <!-- <div class ="btn-cont"><button class = "btn btn-default" id="scrape">Show my food</button></div> -->
                 </div>
                 <ul class ="list"></ul>

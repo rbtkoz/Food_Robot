@@ -1,5 +1,21 @@
 $(document).ready(function(){
   
+$('#fd').validate({ // initialize the plugin
+        rules: {
+            field1: {
+                required: true,
+                email: true
+            },
+            field2: {
+                required: true,
+                minlength: 2
+            }
+        }
+    });
+
+ function validator(){
+        return $('#fd').valid();
+    }
 
   $("#slides").slidesjs({
     play: {
@@ -23,9 +39,10 @@ $(document).ready(function(){
     
 
 var MyCartArray;
-
-  $("#scrape").click(function(event){
+$("#scrape").click(function(event){
+  
     event.preventDefault();
+    if (validator()){
     var user = $('#exampleInputEmail1').val();
     var pass = $('#exampleInputPassword1').val()
     // console.log(user +" " + pass);
@@ -79,21 +96,21 @@ var MyCartArray;
 
 
       
-      error: function(xhr, data, errorThrown)
-          {
+      // error: function(xhr, data, errorThrown)
+      //     {
             
               
-              ajaxStop: $("body").removeClass("loading");
-               $("#exampleInputPassword1").toggleClass("inactive");
-                $("#exampleInputEmail1").toggleClass("inactive");
+      //         ajaxStop: $("body").removeClass("loading");
+      //          $("#exampleInputPassword1").toggleClass("inactive");
+      //           $("#exampleInputEmail1").toggleClass("inactive");
 
-                $("#scrape").toggleClass("inactive");
-                $(".title-cart").css("display","none"); 
+      //           $("#scrape").toggleClass("inactive");
+      //           $(".title-cart").css("display","none"); 
 
 
-              alert("Sorry try again. Wrong username or password");
+      //         alert("Sorry try again. Wrong username or password");
             
-          },
+      //     },
       // ajaxStop: function() { $body.removeClass("loading"); }   
       success: function(data) { 
         MyCartArray =data;
@@ -108,6 +125,8 @@ var MyCartArray;
     // alert("Sorry try again. Wrong username or password or your cart is empty");
 }else{
        ajaxStop: $("body").removeClass("loading");
+       $(".alert-danger").css("display","none");
+
        MyCartArray =data;
 
        // $(".yum").addClass( "btn btn-default" ); 
@@ -148,8 +167,11 @@ var MyCartArray;
       // $(".list-title").css("display","block");
     }
   }
+
     });
-  return MyCartArray;
+    return MyCartArray;
+}
+
   });
 
   $(".fa-info-circle").click(function(){
@@ -168,7 +190,7 @@ var MyCartArray;
   })
   
   $("#scrape").click(function(){
-    
+        if (validator()){
         $("#exampleInputPassword1").toggleClass("inactive");
         $("#exampleInputEmail1").toggleClass("inactive");
 
@@ -183,7 +205,7 @@ var MyCartArray;
     //  $(".recipe").css("margin-top","0px");
   
 
-    
+   } 
   })
 
 //   $('#recipe-search').click(function(event) {
