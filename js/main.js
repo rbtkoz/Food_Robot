@@ -136,10 +136,11 @@ $(document).ready(function(){
       //reset
         $('ul.list-recipe').empty();
         var data1 = data.matches;
+        var ext_recipe ="www.yummly.com/recipe/external/";
         console.log(data);
         for (var i=0; i<data1.length;i++){
           if(i%2 ===0){
-            $('ul.list-recipe').css("list-style","none").append("<li class ='edno'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4 class ='title1'>"+data1[i].recipeName+"</h4><i class='fa fa-check fa-3x'></i>"+"<ul class='four' id ="+data1[i].id +"></ul>");
+            $('ul.list-recipe').css("list-style","none").append("<li class ='edno'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><a target='_blank' href="+ ext_recipe+ data1[i].id+"><h4 class ='title1'>"+data1[i].recipeName+"</h4></a><i class='fa fa-check fa-3x'></i>"+"<ul class='four' id ="+data1[i].id +"></ul>");
             // $(".1").append("<ul class ='ingredients'></ul");        +'"'+"><h4>"+data1[i].id+'</h4></ul>'
             // $("#"+data1[i].id).css("display","none");
             $("#"+data1[i].id).toggle();
@@ -155,7 +156,7 @@ $(document).ready(function(){
             console.log("im_Here");
             // console.log(i);
             }else{
-              $('ul.list-recipe').append("<li class ='dve'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><h4 class ='title1'>"+data1[i].recipeName+"</h4></h4><i class='fa fa-check fa-3x'></i><ul class='four' id ="+data1[i].id +"></ul>");
+              $('ul.list-recipe').append("<li class ='dve'><img src="+'"'+data1[i].smallImageUrls[0]+'"'+"><a target='_blank' href="+ ext_recipe+ data1[i].id+"><h4 class ='title1'>"+data1[i].recipeName+"</h4></a><i class='fa fa-check fa-3x'></i><ul class='four' id ="+data1[i].id +"></ul>");
               // $("."+data1[i].id).css("display","none");
               // console.log(data2.id+"<--data2var here in 2");
               $("#"+data1[i].id).toggle();
@@ -279,7 +280,7 @@ $(document).ready(function(){
   //   });
 
 
-    $('body').on("click","li i",function(){
+    $('body').on("click","li i .fa",function(){
       $(this).toggleClass("green");
     });
 
