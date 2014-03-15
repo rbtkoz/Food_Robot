@@ -136,7 +136,7 @@ $(document).ready(function(){
       //reset
         $('ul.list-recipe').empty();
         var data1 = data.matches;
-        var ext_recipe ="www.yummly.com/recipe/external/";
+        var ext_recipe ="http://www.yummly.com/recipe/external/";
         console.log(data);
         for (var i=0; i<data1.length;i++){
           if(i%2 ===0){
