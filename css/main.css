@@ -164,7 +164,7 @@ i{
 }
 
 .description h4{
-  font-size:100px;
+  font-size:5.5vw;
 
   color:white;
   text-decoration: none;
@@ -172,7 +172,7 @@ i{
 }
 
 .description h4:hover{
-  font-size:100px;
+  font-size:5.5vw;
   color:black;
   text-decoration: none;
 }
