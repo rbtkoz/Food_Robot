@@ -1,6 +1,6 @@
 $(document).ready(function(){
-  var pass =$("#exampleInputPassword1");
-  var user =$("#exampleInputEmail1");
+  var pass =$("#exampleInputPassword1").attr("name","pass");;
+  var user =$("#exampleInputEmail1").attr("name","user");;
   $('#fd').validate({ // initialize the plugin
     rules: {
             user : {
@@ -41,8 +41,10 @@ $(document).ready(function(){
 
   var MyCartArray;
   $("#scrape").click(function(event){
+    
     event.preventDefault();
     if (validator()){
+    
       // console.log(user +" " + pass);
       ajaxStart: $("body").addClass("loading"); 
       $.ajax({
