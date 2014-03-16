@@ -12,6 +12,7 @@ $(document).ready(function(){
                   minlength: 2
               }
           }
+           
   });
 
   function validator(){
