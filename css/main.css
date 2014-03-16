@@ -384,12 +384,16 @@ li.edno, li.dve{
 
 }
 
-.fa-check.green{
+.fa-chevron-down{
+  margin-top:12px;
+  margin-right:5px;
   color:green;
   
 }
-.fa-check{
-  color:white;
+.fa-chevron-right{
+  margin-top:12px;
+  margin-right:5px;
+  color:#FFFFFF;
 
 }
 .edno h4{
